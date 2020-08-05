@@ -2,7 +2,7 @@
 let availableQuestions = {
     questions: [
             {
-                text: '1. What year is it now?',
+                text: 'What year is it now?',
                 options: {
                     'a': '2020_correct',
                     'b': '2019',
@@ -12,7 +12,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'a',
             }, 
             {
-                text: '2. What month is it now?',
+                text: 'What month is it now?',
                 options: {
                     'a': 'January',
                     'b': 'February',
@@ -22,7 +22,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'd',
             },
             {
-                text: '3. What weekday is it today?',
+                text: 'What weekday is it today?',
                 options: {
                     'a': 'Monday',
                     'b': 'Tuesday',
@@ -32,7 +32,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'd',
             },
             {
-                text: '4. What day is it today?',
+                text: 'What day is it today?',
                 options: {
                     'a': '19',
                     'b': '20',
@@ -42,7 +42,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'd',
             },
             {
-                text: '5. What season is it now?',
+                text: 'What season is it now?',
                 options: {
                     'a': 'winter',
                     'b': 'Spring',
@@ -52,7 +52,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'd',
             },
             {
-                text: '6. What season was it before?',
+                text: 'What season was it before?',
                 options: {
                     'a': 'winter',
                     'b': 'Spring',
@@ -62,7 +62,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'c',
             },
             {
-                text: '7. What day was yesterday?',
+                text: 'What day was yesterday?',
                 options: {
                     'a': '31_correct',
                     'b': '20',
@@ -72,7 +72,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'a',
             },
             {
-                text: '8. What weekday was yesterday?',
+                text: 'What weekday was yesterday?',
                 options: {
                     'a': 'Monday',
                     'b': 'Friday_correct',
@@ -82,7 +82,7 @@ let availableQuestions = {
                 correctAnswerIndex: 'b',
             },
             {
-                text: '9. What month was before?',
+                text: 'What month was before?',
                 options: {
                     'a': 'January',
                     'b': 'February',
@@ -92,24 +92,24 @@ let availableQuestions = {
                 correctAnswerIndex: 'c',
             },
             {
-                text: '10. What year was before?',
+                text: 'What year was before?',
                 options: {
                     'a': '2020',
                     'b': '2019_correct',
                     'c': '2015',
                     'd': '2001',
                 },
-                correctAnswerIndex: 'a',
+                correctAnswerIndex: 'b',
             },
     ],
-    getRandomQuestion(nextQuestionIndex) {
+    getRandomQuestion() {
         
-        nextQuestionIndex = Math.rendom()*availableQuestions.questions.length;
-        if (game.askedQuestions.includes(nextQuestionIndex)) {
-            this.getRandomQuestion(nextQuestionIndex);
+        let newIndex = Math.floor(Math.random()*availableQuestions.questions.length);
+        if (game.askedQuestions.includes(newIndex)) {
+            this.getRandomQuestion(newIndex);
         } else {
-            game.askedQuestions.push(nextQuestionIndex);
-            return nextQuestionIndex;
+            game.askedQuestions.push(newIndex);
+            return newIndex;
         }
     }
 

@@ -1,13 +1,12 @@
 let leader = {
-    askQuestion(nextQuestionIndex) {
-        
-        let variation = '';
-        for (let i = 1; i <= config.numberOfQuestions; i++) {
- //           console.log(`Question No ${i}:\n${availableQuestions.question[nextQuestionIndex].getRendomQuestion(nextQuestionIndex)}\n`);
-            for (let key in availableQuestions.questions[nextQuestionIndex].options) {
-                variation += `${key}: ${availableQuestions.questions[nextQuestionIndex].options[key]}\n`;
-            }
+    askQuestion(nextQuestionIndex, i) {
+
+        let variations = '';    
+        for (let key in availableQuestions.questions[nextQuestionIndex].options) {
+            variations += `${key}: ${availableQuestions.questions[nextQuestionIndex].options[key]}\n`;            
         }
+        let answer = prompt(`Question No ${i}: ${availableQuestions.questions[nextQuestionIndex].text}\nThe options are: \n ${variations}`);
+        return answer === availableQuestions.questions[nextQuestionIndex].correctAnswerIndex;
             
     }
     

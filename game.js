@@ -6,14 +6,22 @@ let game = {
      * runs a game.
      */
     run() {
-        console.log('Welcome to the game "Who wants to win a million!"'); //добро пожаловать на игру Кто хочет стать миллионером
-        this.score += 1;
-        console.log(this.score);
-        leader.askQuestion(this.nextQuestionIndex);
+        console.log('Welcome to the game "Who wants to win a million!'); //добро пожаловать на игру Кто хочет стать миллионером
+
+        for (let i = 1; i <= config.numberOfQuestions; i++) {
+            
+            let result = leader.askQuestion(availableQuestions.getRandomQuestion(), i);
+            if (result) {
+                this.score++;
+            }
+        }
+        console.log(`Total ${config.numberOfQuestions} questions were asked. Correct answers: ${this.score}`);
+        if (this.score == config.numberOfQuestions) {
+            console.log(`You win a million!`);
+        } else {
+            console.log(`You did not won a million`);
+        }
     },
-    /**
-     * This function launches as the index.html opens.
-     */
     
 };
 //console.log('To start the game type game.run() and press Enter'); //для начала игры напишите game.run() и нажимите Enter
